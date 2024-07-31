@@ -1,0 +1,6 @@
+sql:
+  user: "admin"
+  host: "192.168.102.108"
+  port: 3306
+  password: "password"
+  database: "class"

@@ -1,0 +1,6 @@
+openproject:
+  url: "http://192.168.102.127:8080"
+  admin_api_key: "53c1a15d3b7c3c6bf0b32862a44061ac201b01a0df884029f95aaac9137e8d71"
+  teacher_api_key: "daa38207e14d43d554a1e8adf85d489b37637334c167a4f577262f7e41363dbf"
+  student_api_key: ""
+  

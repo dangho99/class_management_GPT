@@ -1,0 +1,39 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres-container
+    environment:
+      - POSTGRES_DB=class
+      - POSTGRES_USER=ubuntu
+      - POSTGRES_PASSWORD=123123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - classroom-network
+
+  jira:
+    image: atlassian/jira-software
+    container_name: jira-container
+    environment:
+      - JIRA_DB_TYPE=postgres72
+      - JIRA_DB_DRIVER=org.postgresql.Driver
+      - JIRA_DB_URL=jdbc:postgresql://postgres:5432/class
+      - JIRA_DB_USER=ubuntu
+      - JIRA_DB_PASSWORD=123123
+    ports:
+      - "8080:8080"
+    volumes:
+      - jira-data:/var/atlassian/jira
+      - /usr/share/java/postgresql-42.7.3.jar:/opt/atlassian/jira/lib/postgresql-42.7.3.jar
+    networks:
+      - classroom-network
+
+volumes:
+  postgres-data:
+  jira-data:
+
+networks:
+  classroom-network:
