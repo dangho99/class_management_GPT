@@ -67,5 +67,14 @@ def load_project_config():
         return None
     return config.get(project_type)
 
+def load_chatbot_config():
+    model_type = os.environ["chatbot_type"]
+    path = f"""{project_path}/config/{os.environ['envir']}/chatbot.yaml"""
+    config = load(path=path)
+    if model_type not in config:
+        print(f"{model_type} hasn't configured yet")
+        return None
+    return config.get(model_type)
+
 
 

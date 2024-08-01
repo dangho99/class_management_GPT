@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from langchain.output_parsers import PydanticOutputParser
 
 class Validator(BaseModel):
-    # Must
+    # Model Type
     llm_type: str | Literal["chatgpt","mistral","llama"]
     
     # Class
