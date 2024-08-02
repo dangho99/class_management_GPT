@@ -17,7 +17,7 @@ try:
     admin_session = op_client
     logger.info("Admin Okay")
 except Exception as e:
-    logger.warning("Can't create teacher assignment session")
+    logger.warning(f"Can't create admin session because of {e}")
 
 def admin_request(func):
     @wraps(func)

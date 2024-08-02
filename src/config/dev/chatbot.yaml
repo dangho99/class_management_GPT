@@ -1,3 +1,7 @@
 chatgpt:
   api_key: "sk-None-pWOegfQMGTBOR763x3OFT3BlbkFJ4aM0zayBVNeGjaLQgGNt"
 
+gemini:
+  api_key: "AIzaSyBM61X2LBxa6dMo5rTI4BcmUw9cxrfnfZ0"
+
+  
