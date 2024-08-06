@@ -4,4 +4,7 @@ chatgpt:
 gemini:
   api_key: "AIzaSyBM61X2LBxa6dMo5rTI4BcmUw9cxrfnfZ0"
 
+claude:
+  api_key: "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"
+
   

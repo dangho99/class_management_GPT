@@ -1,4 +1,4 @@
-from src.chatbot.bot import ExecutionStrategyFactory
+from src.chatbot.bot.execution import ExecutionStrategyFactory
 
 class BaseAgent:
     def __init__(self, agent_management) -> None:

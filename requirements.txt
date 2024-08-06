@@ -32,3 +32,4 @@ langchain-community
 huggingface-hub
 huggingface
 rank_bm25
+anthropic

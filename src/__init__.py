@@ -5,42 +5,8 @@ from functools import wraps
 from src.ABC.ObjectAbstract import logger
 import os
 logger = logger.bind(class_name="src")
-### Open Project configure
-from pyopenproject.openproject import OpenProject
-admin_session = False
-try:
-    op_cfg = load_project_config()
-    op_client = OpenProject(
-        url=op_cfg["url"],
-        api_key=op_cfg["admin_api_key"],
-    )
-    admin_session = op_client
-    logger.info("Admin Okay")
-except Exception as e:
-    logger.warning(f"Can't create admin session because of {e}")
-
-def admin_request(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        self = args[0]
-        trans_session = kwargs.get('trans_session', self.session)  
-        kwargs['trans_session'] = trans_session 
-        if trans_session is not admin_session:
-            return logger.warning("Not in admin session")
-        logger.info("Begin running admin func: %s " % str(func))
-        logger.info("Create session successfully")
-        try:
-            result = func(*args, **kwargs)
-            logger.info("Admin session successfully")
-            return result  
-        except Exception as e:
-            logger.error(f"Admin session was error because of {e}")
-            raise SystemExit()
-    return wrapper
-    
 
 
-    
 ### Database configure
 from src.utils.load_config import load_sql_config
 from sqlalchemy.orm import sessionmaker
@@ -78,4 +44,44 @@ def sql_request(func):
             trans_session.close()
     return wrapper
 
+
+
+
+
+### Open Project configure
+from pyopenproject.openproject import OpenProject
+admin_session = False
+try:
+    op_cfg = load_project_config()
+    op_client = OpenProject(
+        url=op_cfg["url"],
+        api_key=op_cfg["admin_api_key"],
+    )
+    admin_session = op_client
+    logger.info("Admin Okay")
+except Exception as e:
+    logger.warning(f"Can't create admin session because of {e}")
+
+def admin_request(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        self = args[0]
+        trans_session = kwargs.get('trans_session', self.session)  
+        kwargs['trans_session'] = trans_session 
+        if trans_session is not admin_session:
+            return logger.warning("Not in admin session")
+        logger.info("Begin running admin func: %s " % str(func))
+        logger.info("Create session successfully")
+        try:
+            result = func(*args, **kwargs)
+            logger.info("Admin session successfully")
+            return result  
+        except Exception as e:
+            logger.error(f"Admin session was error because of {e}")
+            raise SystemExit()
+    return wrapper
+    
+
+
+    
 

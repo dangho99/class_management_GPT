@@ -1,18 +1,12 @@
 import os
+from loguru import logger
+logger = logger.bind(class_name="root")
 os.environ["envir"] = "dev"
 os.environ["project_type"] = "openproject"
 os.environ["session"] = "admin"
-chatbot_type = os.environ["chatbot_type"] = "chatgpt"
+chatbot_type = os.environ["chatbot_type"] = "gemini"
 
-from src.chatbot import AgentManagement
+from src.chatbot.tasks.command.run import Command
 
-agent_management = AgentManagement(model_key=chatbot_type)
-
-agent_management.get_model()
-
-assignment_agent = agent_management.get_agent(agent_name='assignment')
-
-query = assignment_agent.execute("start")
-query = assignment_agent.execute("last")
-
-print(assignment_agent)
+a = Command(chatbot_type=chatbot_type)
+a.get_agent("assignment")

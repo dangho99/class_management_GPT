@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
-from src.chatbot.bot import Chatbot
+#from src.chatbot.bot import Loader
 import importlib
 
 
-class AgentManagement(Chatbot):
+class ChatBot(ABC):
     def __init__(self, model_key) -> None:
         super().__init__(model_key)
         self.agent = None

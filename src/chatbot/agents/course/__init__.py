@@ -1,7 +1,7 @@
-from src.chatbot.agents import AgentManagement
+from src.chatbot.agents import ChatBot
 import os
 
-class CourseAgent(AgentManagement):
+class CourseAgent(ChatBot):
     def __init__(self, trans_session) -> None:
         super().__init__(trans_session)
         
