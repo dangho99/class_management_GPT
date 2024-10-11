@@ -9,4 +9,7 @@ chatbot_type = os.environ["chatbot_type"] = "gemini"
 from src.chatbot.tasks.command.run import Command
 
 a = Command(chatbot_type=chatbot_type)
-a.get_agent("assignment")
+agent = a.get_agent("assignment")
+
+a.run("What the weather today ?")
+print(agent)

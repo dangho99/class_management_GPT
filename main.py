@@ -30,14 +30,14 @@ from src.business import Dashboard
 a = Dashboard(session_type='admin')
 b = a.get_student_service()
 b.create(
-    login="h.wurst2",
-    email="h.wurst2@openproject.com",
-    first_name="Hans32323",
-    last_name="Wurst32323",
+    login="dangho",
+    email="dangho@openproject.com",
+    first_name="Dang",
+    last_name="Ho",
     admin=False,
     language="de",
     status="active",
     # Password minimum is 10 characters)
-    password="h.wurst1234567890"
+    password="Hohadang_123"
 )
 #b.delete_from_class("Hans3232 Wurst32323")

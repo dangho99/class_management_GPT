@@ -8,7 +8,7 @@ class AssignmentAgent(BaseAgent):
         self.update_stats(query)
         result = self.execution_strategy.execute(query)
         print(f"AssignmentAgent {result}")
-
+        return result
 
 def agent(agent_management):
     return AssignmentAgent(agent_management)

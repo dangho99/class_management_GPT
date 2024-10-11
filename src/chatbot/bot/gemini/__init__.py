@@ -6,14 +6,14 @@ import os
 bot_cfg = load_chatbot_config()
 genai.configure(api_key=bot_cfg["api_key"])
 model = genai.GenerativeModel(
-  model_name="text-embedding-004",
+  model_name="gemini-1.5-flash",
   safety_settings=safety_settings,
   generation_config=generation_config,
 )
 
 def get_gemini_response(query):
     try:
-        response = model.embed_context(query)
+        response = model.generate_content(query)
         return response.text
     except Exception as e:
         print(f"An error occurred: {e}")

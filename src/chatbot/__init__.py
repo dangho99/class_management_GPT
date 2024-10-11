@@ -1,11 +1,14 @@
 from abc import ABC, abstractmethod
+from src.ABC.ObjectAbstract import ObjectAbstract
 #from src.chatbot.bot import Loader
 import importlib
 
 
-class ChatBot(ABC):
+class ChatBot(ObjectAbstract):
     def __init__(self, model_key) -> None:
-        super().__init__(model_key)
+        super().__init__()
+        self.model_key = model_key
+        self.model = None  # You might want to load the model here
         self.agent = None
 
     def get_agent(self, agent_name):

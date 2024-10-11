@@ -5,20 +5,19 @@ from src.ABC.ObjectAbstract import ObjectAbstract
 class Command(ObjectAbstract):
     def __init__(self, chatbot_type) -> None:
         super().__init__()
-        self.chatbot_type = chatbot_type
-        self.bot = ChatBot(model_key=chatbot_type)
+        self.chatbot = ChatBot(model_key=chatbot_type)
         self.agent = None
-        
+
     def get_agent(self, name):
-        self.agent = self.bot.get_agent(agent_name=name)
+        self.agent = self.chatbot.get_agent(agent_name=name)
         return self.agent
-    
+
     def run(self, query):
         if self.agent is None:
-            self.logger.error("Hasn't assign any agent. Exit now")
+            self.logger.error("Hasn't assigned any agent. Exit now")
             raise SystemExit()
-        result = self.agent.execute(query)
+        self.agent.update_stats(query)
+        result = self.agent.execution_strategy.execute(query)
         self.logger.info(result)
-        
         return result
         
